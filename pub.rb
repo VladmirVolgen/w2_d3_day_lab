@@ -32,6 +32,8 @@ attr_reader :name, :till, :drinks
   def sell_drink(drink, customer)
     if check_age(customer) == false
       return "Come back when you are 18!"
+    elsif sober?(customer) == false
+      return "Get out of my pub drunkard!"
     end
     customer.buy_drink(drink)
     add_money(drink.price)
