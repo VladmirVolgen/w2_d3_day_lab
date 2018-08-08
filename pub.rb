@@ -8,18 +8,6 @@ attr_reader :name, :till, :drinks
     @till = till
     @drinks = drinks
   end
-# I didn't need to do that
-
-  # def find_drink(drink_name)
-  #
-  #   for drink in @drinks
-  #     if drink.name == drink_name
-  #       return drink
-  #     else
-  #       return "We don't have that drink"
-  #     end
-  #   end
-  # end
 
   def add_money(amount)
     @till += amount
@@ -29,15 +17,20 @@ attr_reader :name, :till, :drinks
     @drinks.delete(drink)
   end
 
+#I could use some sort of sort answer instead of nils if I wanted to do a real app, that way I would know what kind of "nils" I return and I could print an answer
   def sell_drink(drink, customer)
     if check_age(customer) == false
-      return "Come back when you are 18!"
+     return nil
     elsif sober?(customer) == false
-      return "Get out of my pub drunkard!"
+      return nil
     end
-    customer.buy_drink(drink)
-    add_money(drink.price)
-    remove_drink(drink)
+
+    if find_drink?(drink.name)
+      customer.buy_drink(drink)
+      add_money(drink.price)
+      remove_drink(drink)
+    end
+
 
   end
 
@@ -47,6 +40,17 @@ attr_reader :name, :till, :drinks
 
   def sober?(customer)
     return customer.drunkenness_lvl <= 5
+  end
+
+  def find_drink?(drink_name)
+
+    for drink in @drinks
+      if drink.name == drink_name
+        return drink
+      else
+        return false
+      end
+    end
   end
 
 

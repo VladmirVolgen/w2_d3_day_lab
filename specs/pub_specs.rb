@@ -34,17 +34,9 @@ class PubTest < MiniTest::Test
     assert_equal(4, @pub.drinks.count)
   end
 
-  # def test_find_drink_by_name
-  #   assert_equal(@drink1, @pub.find_drink("Beer"))
-  # end
-  #
-  # def test_drink_by_name__not_found
-  #   assert_equal("We don't have that drink", @pub.find_drink("ygiy"))
-  # end
-
   def test_add_money
-    @pub.add_money(50)
-    assert_equal(550, @pub.till)
+    @pub.add_money(50.0)
+    assert_equal(550.0, @pub.till)
   end
 
   def test_remove_drink
@@ -54,22 +46,23 @@ class PubTest < MiniTest::Test
 
   def test_sell_drink
     @pub.sell_drink(@drink1, @customer2)
-    assert_equal(503, @pub.till)
-    assert_equal(3, @pub.drinks.count)
+    assert_equal(503.0, @pub.till)
+    assert_equal(3.0, @pub.drinks.count)
+    assert_equal(7, @customer2.wallet)
   end
 
   def test_sell_drink__too_young_to_sell
     @pub.sell_drink(@drink1, @customer1)
-    assert_equal(500, @pub.till)
+    assert_equal(500.0, @pub.till)
     assert_equal(4, @pub.drinks.count)
-    assert_equal("Come back when you are 18!", @pub.sell_drink(@drink1, @customer1))
+    assert_nil(@pub.sell_drink(@drink1, @customer1))
   end
 
   def test_sell_drink__too_drunk
     @pub.sell_drink(@drink1, @customer3)
-    assert_equal(500, @pub.till)
+    assert_equal(500.0, @pub.till)
     assert_equal(4, @pub.drinks.count)
-    assert_equal("Get out of my pub drunkard!", @pub.sell_drink(@drink1, @customer3))
+    assert_nil(@pub.sell_drink(@drink1, @customer3))
   end
 
   def test_check_age
@@ -86,6 +79,14 @@ class PubTest < MiniTest::Test
 
   def test_sober__no
     assert_equal(false, @pub.sober?(@customer3))
+  end
+
+  def test_find_drink_by_name
+    assert_equal(@drink1, @pub.find_drink?("Beer"))
+  end
+
+  def test_drink_by_name__not_found
+    assert_equal(false, @pub.find_drink?("ygiy"))
   end
 
 end
