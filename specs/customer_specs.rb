@@ -46,7 +46,12 @@ class CustomerTest < MiniTest::Test
     @customer1.buy_drink(@drink1)
     assert_equal(7.0, @customer1.wallet)
     assert_equal(1, @customer1.drunkenness_lvl)
+  end
 
+  def test_buy_drink__no_money
+    @customer2.buy_drink(@drink3)
+    assert_equal(1.0, @customer2.wallet)
+    assert_equal(0, @customer2.drunkenness_lvl)
   end
 
   def test_can_buy__true

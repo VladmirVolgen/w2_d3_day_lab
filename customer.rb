@@ -9,6 +9,7 @@ class Customer
     @drunkenness_lvl = drunkenness_lvl
   end
 
+# I wasn't ask to do that
   # def buy_drink(drink, pub)
   #   # return "we don't have that drink" if drink is not on the pub
   #   # search for drink object
@@ -17,10 +18,13 @@ class Customer
   #   @wallet -= drink.price
   # end
 
-  # change this
+
   def buy_drink(drink)
-    @wallet -= drink.price
-    @drunkenness_lvl += drink.alcohol_lvl
+    # if can_buy?(drink) == true
+    if can_buy?(drink)
+      @wallet -= drink.price
+      @drunkenness_lvl += drink.alcohol_lvl
+    end
   end
 
   def can_buy?(drink)
