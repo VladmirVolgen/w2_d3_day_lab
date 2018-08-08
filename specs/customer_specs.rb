@@ -14,7 +14,8 @@ class CustomerTest < MiniTest::Test
     @drink4 = Drink.new("Vodka", 6.0, 3)
 
     @customer1 = Customer.new("Alvaro", 10.0, 28)
-    @customer2 = Customer.new("Mindy", 6.0, 16)
+    @customer2 = Customer.new("Mindy", 1.0, 16)
+
 
   end
 
@@ -47,6 +48,16 @@ class CustomerTest < MiniTest::Test
     assert_equal(1, @customer1.drunkenness_lvl)
 
   end
+
+  def test_can_buy__true
+    assert_equal(true, @customer1.can_buy?(@drink1))
+  end
+
+  def test_can_buy__false
+    assert_equal(false, @customer2.can_buy?(@drink4))
+  end
+
+
 
 
 

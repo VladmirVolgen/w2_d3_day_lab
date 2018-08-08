@@ -21,7 +21,11 @@ class Customer
   def buy_drink(drink)
     @wallet -= drink.price
     @drunkenness_lvl += drink.alcohol_lvl
+  end
 
+  def can_buy?(drink)
+    # It will compare and return true or false
+    return @wallet >= drink.price
   end
 
 
