@@ -17,10 +17,11 @@ class Customer
   #   @wallet -= drink.price
   # end
 
-
-  def buy_drink(drink, pub)
+  # change this
+  def buy_drink(drink)
     @wallet -= drink.price
-    pub.sell_drink(drink)
+    @drunkenness_lvl += drink.alcohol_lvl
+
   end
 
 
