@@ -25,11 +25,19 @@ attr_reader :name, :till, :drinks
       return nil
     end
 
-    if find_drink?(drink.name)
+    if @drinks.include?(drink)
       customer.buy_drink(drink)
       add_money(drink.price)
       remove_drink(drink)
     end
+
+# Linked to the end question
+
+    # if find_drink?(drink.name)
+    #   customer.buy_drink(drink)
+    #   add_money(drink.price)
+    #   remove_drink(drink)
+    # end
 
 
   end
@@ -42,16 +50,17 @@ attr_reader :name, :till, :drinks
     return customer.drunkenness_lvl <= 5
   end
 
-  def find_drink?(drink_name)
-
-    for drink in @drinks
-      if drink.name == drink_name
-        return drink
-      else
-        return false
-      end
-    end
-  end
+# Is there a way to look for the drink name, and that way retrieve one of the objects
+  # def find_drink?(drink_name)
+  #
+  #   for drink in @drinks
+  #     if drink.name == drink_name
+  #       return drink
+  #     else
+  #       return false
+  #     end
+  #   end
+  # end
 
 
 

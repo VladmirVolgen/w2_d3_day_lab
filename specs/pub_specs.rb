@@ -12,6 +12,7 @@ class PubTest < MiniTest::Test
     @drink2 = Drink.new("Ale", 4.0, 1)
     @drink3 = Drink.new("Wine", 5.0, 2)
     @drink4 = Drink.new("Vodka", 6.0, 3)
+    @drink5 = Drink.new("Vodka2", 6.0, 3)
 
     drinks = [@drink1, @drink2, @drink3, @drink4]
 
@@ -65,6 +66,10 @@ class PubTest < MiniTest::Test
     assert_nil(@pub.sell_drink(@drink1, @customer3))
   end
 
+  def test_sell_drink__drink_not_found
+    assert_nil(@pub.sell_drink(@drink5, @customer2))
+  end
+
   def test_check_age
     assert_equal(false, @pub.check_age(@customer1))
   end
@@ -81,12 +86,12 @@ class PubTest < MiniTest::Test
     assert_equal(false, @pub.sober?(@customer3))
   end
 
-  def test_find_drink_by_name
-    assert_equal(@drink1, @pub.find_drink?("Beer"))
-  end
-
-  def test_drink_by_name__not_found
-    assert_equal(false, @pub.find_drink?("ygiy"))
-  end
+  # def test_find_drink_by_name
+  #   assert_equal(@drink1, @pub.find_drink?("Beer"))
+  # end
+  #
+  # def test_drink_by_name__not_found
+  #   assert_equal(false, @pub.find_drink?("ygiy"))
+  # end
 
 end
