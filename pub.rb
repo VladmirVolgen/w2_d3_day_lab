@@ -8,17 +8,18 @@ attr_reader :name, :till, :drinks
     @till = till
     @drinks = drinks
   end
+# I didn't need to do that
 
-  def find_drink(drink_name)
-
-    for drink in @drinks
-      if drink.name == drink_name
-        return drink
-      else
-        return "We don't have that drink"
-      end
-    end
-  end
+  # def find_drink(drink_name)
+  #
+  #   for drink in @drinks
+  #     if drink.name == drink_name
+  #       return drink
+  #     else
+  #       return "We don't have that drink"
+  #     end
+  #   end
+  # end
 
   def add_money(amount)
     @till += amount
@@ -29,14 +30,23 @@ attr_reader :name, :till, :drinks
   end
 
   def sell_drink(drink, customer)
-    return if check_age(customer) == false
+    if check_age(customer) == false
+      return "Come back when you are 18!"
+    end
+    customer.buy_drink(drink)
     add_money(drink.price)
     remove_drink(drink)
+
   end
 
   def check_age(customer)
-    return false if customer.age < 18
-    true
+    return  customer.age >= 18
   end
+
+  def sober?(customer)
+    return customer.drunkenness_lvl <= 5
+  end
+
+
 
 end

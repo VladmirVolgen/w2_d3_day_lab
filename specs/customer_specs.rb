@@ -1,7 +1,6 @@
 require("minitest/autorun")
 require("minitest/rg")
 require("pry")
-require_relative("../pub")
 require_relative("../customer")
 require_relative("../drink")
 
@@ -34,13 +33,6 @@ class CustomerTest < MiniTest::Test
   def test_customer_has_drunkenness_lvl
     assert_equal(0, @customer1.drunkenness_lvl)
   end
-
-  # def test_buy_drink
-  #   @customer1.buy_drink(@drink1, @pub)
-  #   assert_equal(7, @customer1.wallet)
-  #   assert_equal(3, @pub.drinks.count)
-  #   assert_equal(303, @pub.till)
-  # end
 
   def test_buy_drink
     @customer1.buy_drink(@drink1)
