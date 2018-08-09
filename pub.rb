@@ -17,7 +17,8 @@ attr_reader :name, :till, :drinks
     @drinks.delete(drink)
   end
 
-#I could use some sort of sort answer instead of nils if I wanted to do a real app, that way I would know what kind of "nils" I return and I could print an answer
+# I could use some sort of sort answer instead of nils if I wanted to do a real app, that way I would know what kind of "nils" I return and I could print an answer
+
   def sell_drink(drink, customer)
     if check_age(customer) == false
      return nil
@@ -61,6 +62,8 @@ attr_reader :name, :till, :drinks
   #     end
   #   end
   # end
+
+# How I would do that is adding to the beer object a stock attribute
 
 
 
